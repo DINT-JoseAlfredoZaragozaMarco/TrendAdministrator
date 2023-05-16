@@ -1,0 +1,18 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="TrendAdministrator.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="Endpoint" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">http://trend.eastus.cloudapp.azure.com:8080/ApiRestTrend/trend/</Value>
+    </Setting>
+    <Setting Name="NombreContenedorImagenesAzure" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">images-products</Value>
+    </Setting>
+    <Setting Name="ClaveAzure" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">DefaultEndpointsProtocol=https;AccountName=trendproject;AccountKey=vyzqIllEIrHeEGCxKRkQLCRf/SOYoUZmP1OYNlTY3kYMEsRchfSgg2hHKv7tEq3klF4kpdcXkReZ+ASt+mli7g==;EndpointSuffix=core.windows.net</Value>
+    </Setting>
+    <Setting Name="ClaveSyncfusion" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">OTE4NTAxQDMyMzAyZTM0MmUzMEZPU0Q5VEtWQzB3WXlDZGFvNVM2dEw0cFNPVlVpUTgyWVFMdkFQNzAwckk9</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

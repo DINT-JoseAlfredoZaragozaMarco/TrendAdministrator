@@ -1,0 +1,76 @@
+﻿<Window x:Class="TrendAdministrator.Vistas.ReabastecerProductoWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TrendAdministrator.Vistas"
+        mc:Ignorable="d"
+        Title="Gestion de productos" Height="280" Width="800"
+        ResizeMode="NoResize">
+    <Window.Resources>
+        <Style TargetType="{x:Type TextBlock}">
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="Margin" Value="10"/>
+        </Style>
+
+        <Style TargetType="Image" x:Key="Flechas">
+            <Setter Property="Width" Value="24"></Setter>
+            <Setter Property="Source" Value="../Assets/arrow.ico"></Setter>
+        </Style>
+
+        <ControlTemplate x:Key="ButtonControlTemplate" TargetType="{x:Type Button}">
+            <ContentPresenter x:Name="contentPresenter" ContentTemplate="{TemplateBinding ContentTemplate}" Content="{TemplateBinding Content}" ContentStringFormat="{TemplateBinding ContentStringFormat}" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+        </ControlTemplate>
+        <SolidColorBrush x:Key="Button.MouseOver.Background" Color="#FFBEE6FD"/>
+        <SolidColorBrush x:Key="Button.MouseOver.Border" Color="#FF3C7FB1"/>
+        <SolidColorBrush x:Key="Button.Pressed.Background" Color="#FFC4E5F6"/>
+        <SolidColorBrush x:Key="Button.Pressed.Border" Color="#FF2C628B"/>
+        <SolidColorBrush x:Key="Button.Disabled.Background" Color="#FFF4F4F4"/>
+        <SolidColorBrush x:Key="Button.Disabled.Border" Color="#FFADB2B5"/>
+        <SolidColorBrush x:Key="Button.Disabled.Foreground" Color="#FF838383"/>
+        <ControlTemplate x:Key="ButtonTemplate" TargetType="{x:Type ButtonBase}">
+            <Border x:Name="border" Background="#D8BBEC" CornerRadius="5" BorderBrush="#7C33B8" BorderThickness="3" SnapsToDevicePixels="true">
+                <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+            </Border>
+        </ControlTemplate>
+
+    </Window.Resources>
+    
+    <StackPanel>
+        <StackPanel Orientation="Horizontal">
+            <TextBlock Text="Solicitud de reabastecimiento a la compañia: "/>
+            <TextBlock Text="{Binding Path=ProductoActual.SupplierCode.Company}"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal">
+            <TextBlock Text="Por el producto: "></TextBlock>
+            <TextBlock Text="{Binding Path=ProductoActual.Product}"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal">
+            <TextBlock Text="Talla: "></TextBlock>
+            <TextBlock Text="{Binding Path=ProductoActual.Size}"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal">
+            <TextBlock Text="Una cantidad de: "></TextBlock>
+            <Button Template="{DynamicResource ButtonControlTemplate}" Command="{Binding Path=RestarUnidadCommand}">
+                <Image x:Name="leftImage" Style="{StaticResource Flechas}"></Image>
+            </Button>
+            <TextBlock Text="{Binding Path=Cantidad}"/>
+            <Button Template="{DynamicResource ButtonControlTemplate}" Command="{Binding Path=SumarUnidadCommand}">
+                <Image x:Name="rightImage" Style="{StaticResource Flechas}" RenderTransformOrigin="0.5,0.5">
+                    <Image.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform ScaleY="1"
+                                                ScaleX="-1" />
+                            <SkewTransform AngleY="0"
+                                               AngleX="0" />
+                            <RotateTransform Angle="0" />
+                            <TranslateTransform />
+                        </TransformGroup>
+                    </Image.RenderTransform>
+                </Image>
+            </Button>
+            <TextBlock Text=""/>
+        </StackPanel>
+        <Button Template="{DynamicResource ButtonTemplate}" Command="{Binding Path=AceptarCambiosCommand}" Content="Aceptar" Width="100" HorizontalAlignment="Right" Margin="10" Height="30" Click="Button_Click"/>
+    </StackPanel>
+</Window>

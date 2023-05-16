@@ -1,0 +1,79 @@
+﻿<Window x:Class="TrendAdministrator.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TrendAdministrator"
+        xmlns:syncfusion="http://schemas.syncfusion.com/wpf"
+        mc:Ignorable="d"
+        Title="Trend Administrator" Height="550" Width="1000">
+    <DockPanel>
+        <syncfusion:SfNavigationDrawer x:Name="navigationDrawer" DisplayMode="Expanded">
+            <syncfusion:NavigationItem
+                Header="Gestionar artículos"
+                IsExpanded="True"
+                IsSelected="True"
+                Margin="0,5,0,0">
+                <syncfusion:NavigationItem.Icon>
+                    <Image Source="./Assets/shop.ico"/>
+                </syncfusion:NavigationItem.Icon>
+                <syncfusion:NavigationItem Header="Pedidos" Command="{Binding Path=GestionarPedidosCommand}">
+                    <syncfusion:NavigationItem.Icon>
+                        <Image Source="./Assets/delivery.ico"/>
+                    </syncfusion:NavigationItem.Icon>
+                </syncfusion:NavigationItem>
+                <syncfusion:NavigationItem Header="Productos" Command="{Binding Path=GestionProductosCommand}">
+                    <syncfusion:NavigationItem.Icon>
+                        <Image Source="./Assets/nike.ico"/>
+                    </syncfusion:NavigationItem.Icon>
+                </syncfusion:NavigationItem>
+            </syncfusion:NavigationItem>
+
+            <syncfusion:NavigationItem ItemType="Separator" />
+
+            <syncfusion:NavigationItem Header="Gestionar empresa"
+                                       IsExpanded="True"
+                                       IsSelected="True">
+                <syncfusion:NavigationItem.Icon>
+                    <Image Source="./Assets/document.ico"/>
+                </syncfusion:NavigationItem.Icon>
+                <syncfusion:NavigationItem Header="Gestionar empleados" Command="{Binding Path=CargarGestionEmpleadosCommand}">
+                    <syncfusion:NavigationItem.Icon>
+                        <Image Source="./Assets/employee.ico"/>
+                    </syncfusion:NavigationItem.Icon>
+                </syncfusion:NavigationItem>
+                <syncfusion:NavigationItem Header="Gestionar proveedores" Command="{Binding Path=GestionProveedoresCommand}">
+                    <syncfusion:NavigationItem.Icon>
+                        <Image Source="./Assets/box-delivery.ico"/>
+                    </syncfusion:NavigationItem.Icon>
+                </syncfusion:NavigationItem>
+                <syncfusion:NavigationItem Header="Estadística de los empleados" Command="{Binding Path=CargarEstadisticaCommand}">
+                    <syncfusion:NavigationItem.Icon>
+                        <Image Source="./Assets/statistics.ico"/>
+                    </syncfusion:NavigationItem.Icon>
+                </syncfusion:NavigationItem>
+            </syncfusion:NavigationItem>
+
+            <syncfusion:NavigationItem ItemType="Separator" />
+
+            <syncfusion:SfNavigationDrawer.FooterItems>
+                <syncfusion:NavigationItem Header="Configuración" IsSelected="True">
+                    <syncfusion:NavigationItem.Icon>
+                        <Image Source="./Assets/wheel.ico"/>
+                    </syncfusion:NavigationItem.Icon>
+                </syncfusion:NavigationItem>
+                <syncfusion:NavigationItem Header="{Binding Path=EmpleadoActual.EmployeeName}" Command="{Binding Path=CambiarSesionCommand}">
+                    <syncfusion:NavigationItem.Icon>
+                        <Image Source="./Assets/off.ico"/>
+                    </syncfusion:NavigationItem.Icon>
+                </syncfusion:NavigationItem>
+            </syncfusion:SfNavigationDrawer.FooterItems>
+
+            <syncfusion:SfNavigationDrawer.ContentView>
+                <Border>
+                    <ContentControl Content="{Binding Path=ContenidoVentana}"></ContentControl>
+                </Border>
+            </syncfusion:SfNavigationDrawer.ContentView>
+        </syncfusion:SfNavigationDrawer>
+    </DockPanel>
+</Window>
