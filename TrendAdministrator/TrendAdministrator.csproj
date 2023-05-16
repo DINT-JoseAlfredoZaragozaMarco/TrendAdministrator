@@ -190,6 +190,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Convertidores\ConvertidorEmpleadoActual.cs" />
     <Compile Include="Mensajes\EmpleadoLoggeadoMessage.cs" />
     <Compile Include="Mensajes\EnviarEmpleadoMessage.cs" />
     <Compile Include="Mensajes\EnviarPedidoMessage.cs" />
@@ -318,9 +319,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Convertidores\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Resource Include="Assets\off.ico" />
   </ItemGroup>

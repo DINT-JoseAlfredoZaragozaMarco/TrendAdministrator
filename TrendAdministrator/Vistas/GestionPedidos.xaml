@@ -5,9 +5,11 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:syncfusion="http://schemas.syncfusion.com/wpf" 
              xmlns:local="clr-namespace:TrendAdministrator.Vistas"
+             xmlns:Convertidores="clr-namespace:TrendAdministrator.Convertidores"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <UserControl.Resources>
+        <Convertidores:ConvertidorEmpleadoActual x:Key="ConvertidorEmpleado"></Convertidores:ConvertidorEmpleadoActual>
         <Style TargetType="{x:Type Button}" x:Key="HabilitarBoton">
             <Style.Triggers>
                 <DataTrigger Binding="{Binding Path=PedidoSeleccionado}" Value="{x:Null}">
@@ -16,6 +18,26 @@
                 </DataTrigger>
             </Style.Triggers>
         </Style>
+
+        <Style TargetType="{x:Type Button}" x:Key="HabilitarGestionar" BasedOn="{StaticResource HabilitarBoton}">
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding Path=PedidoSeleccionado.Employee, Converter={StaticResource ConvertidorEmpleado}}" Value="True">
+                    <Setter Property="IsEnabled" Value="False"/>
+                    <Setter Property="Opacity" Value="0.5"/>
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style TargetType="{x:Type Button}" x:Key="HabilitarLanzarPedido" BasedOn="{StaticResource HabilitarBoton}">
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding Path=IsEmpleadoActual}" Value="False">
+                    <Setter Property="IsEnabled" Value="False"/>
+                    <Setter Property="Opacity" Value="0.5"/>
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+
+
     </UserControl.Resources>
     
     <DockPanel Background="White">
@@ -33,10 +55,10 @@
                 <syncfusion:GridTextColumn MappingName="OrderDate" TextAlignment="Center"/>
             </syncfusion:SfDataGrid.Columns>
         </syncfusion:SfDataGrid>
-        <Button Content="Mostrar detalles" DockPanel.Dock="Top" Width="100" HorizontalAlignment="Left" Margin="5" Command="{Binding Path=MostrarDetallesCommand}"/>
+        <Button Content="Mostrar detalles" DockPanel.Dock="Top" Width="100" HorizontalAlignment="Left" Margin="5" Command="{Binding Path=MostrarDetallesCommand}" Style="{StaticResource HabilitarBoton}"/>
         <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal" HorizontalAlignment="Right">
-            <Button Content="Gestionar pedido" Width="100" Margin="5" Style="{StaticResource HabilitarBoton}"/>
-            <Button Content="Lanzar pedido" Width="100" Margin="5" Command="{Binding Path=EnviarFacturaCommand}"/>
+            <Button Content="Gestionar pedido" Width="100" Margin="5" Style="{StaticResource HabilitarGestionar}"/>
+            <Button Content="Lanzar pedido" Width="100" Margin="5" Style="{StaticResource HabilitarLanzarPedido}" Command="{Binding Path=EnviarFacturaCommand}"/>
         </StackPanel>
         <Border BorderBrush="Black" BorderThickness="1" CornerRadius="5" DockPanel.Dock="Bottom" Margin="5">
             <ContentControl Content="{Binding Path=ContenidoVentana}"></ContentControl>

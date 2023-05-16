@@ -51,12 +51,32 @@ namespace TrendAdministrator.VistasModelo
             set { SetProperty(ref contenidoVentana, value); }
         }
 
+        private Employees empleadoActual;
+        public Employees EmpleadoActual
+        {
+            get { return empleadoActual; }
+            set { SetProperty(ref empleadoActual, value); }
+        }
+        private bool isEmpleadoActual;
+
+        public bool IsEmpleadoActual
+        {
+            get { return isEmpleadoActual; }
+            set { SetProperty(ref isEmpleadoActual, value); }
+        }
+
+
         private ServicioApiRest servicioApiRest;
         private ServicioNavegacion servicioNavegacion;
         public RelayCommand MostrarDetallesCommand { get; }
         public RelayCommand EnviarFacturaCommand { get; }
         public GestionPedidosVM()
         {
+            WeakReferenceMessenger.Default.Register<EmpleadoLoggeadoMessage>(this, (r, m) =>
+            {
+                EmpleadoActual = m.Value;
+            });
+
             MostrarDetallesCommand = new RelayCommand(MostrarDetalles);
             EnviarFacturaCommand = new RelayCommand(GenerarFactura);
 
@@ -74,6 +94,11 @@ namespace TrendAdministrator.VistasModelo
             });
         }
 
+        public void CompararEmpleados()
+        {
+            IsEmpleadoActual = PedidoSeleccionado.Employee == EmpleadoActual;
+        }
+
         public void CargarPedidos()
         {
             Pedidos = this.servicioApiRest.OrdersGetAll();
@@ -87,6 +112,12 @@ namespace TrendAdministrator.VistasModelo
                 string[] fecha = pedido.OrderDate.Split('T');
                 pedido.OrderDate = fecha[0];
             }
+        }
+
+        public void GestionarPedido()
+        {
+            PedidoSeleccionado.Employee = EmpleadoActual;
+            CargarPedidos();
         }
 
         public void MostrarDetalles()

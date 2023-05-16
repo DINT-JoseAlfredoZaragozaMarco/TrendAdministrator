@@ -64,6 +64,7 @@ namespace TrendAdministrator.VistasModelo
         public void CargarGestionarPedidos()
         {
             ContenidoVentana = servicioNavegacion.CargarListaPedidos();
+            WeakReferenceMessenger.Default.Send(new EmpleadoLoggeadoMessage(EmpleadoActual));
         }
         public void CargarEstadisticaEmpleados()
         {
