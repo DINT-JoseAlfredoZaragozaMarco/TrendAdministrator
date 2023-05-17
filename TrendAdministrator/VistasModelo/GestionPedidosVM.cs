@@ -25,15 +25,30 @@ namespace TrendAdministrator.VistasModelo
         public Orders PedidoSeleccionado
         {
             get { return pedidoSeleccionado; }
-            set { SetProperty(ref pedidoSeleccionado, value); }
+            set { SetProperty(ref pedidoSeleccionado, value); 
+                  if(pedidoSeleccionado.Employee.IdEmployee == EmpleadoActual.IdEmployee)
+                {
+                    IsEmpleadoActual = true;
+                }
+                else
+                {
+                    IsEmpleadoActual = false;
+                }
+            }
         }
 
         private ObservableCollection<Orders> pedidos;
-
         public ObservableCollection<Orders> Pedidos
         {
             get { return pedidos; }
             set { SetProperty(ref pedidos, value); }
+        }
+
+        private ObservableCollection<Employees> empleadosAComparar;
+        public ObservableCollection<Employees> EmpleadosAComparar
+        {
+            get { return empleadosAComparar; }
+            set { SetProperty(ref empleadosAComparar, value); }
         }
 
         private ObservableCollection<OrderDetails> detallesPedido;
@@ -43,6 +58,8 @@ namespace TrendAdministrator.VistasModelo
             get { return detallesPedido; }
             set { SetProperty(ref detallesPedido, value); }
         }
+
+        
 
         private UserControl contenidoVentana;
         public UserControl ContenidoVentana
