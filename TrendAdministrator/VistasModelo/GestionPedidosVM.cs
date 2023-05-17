@@ -25,14 +25,20 @@ namespace TrendAdministrator.VistasModelo
         public Orders PedidoSeleccionado
         {
             get { return pedidoSeleccionado; }
-            set { SetProperty(ref pedidoSeleccionado, value); 
-                  if(pedidoSeleccionado.Employee.IdEmployee == EmpleadoActual.IdEmployee)
+            set { SetProperty(ref pedidoSeleccionado, value);
+                if (pedidoSeleccionado != null)
                 {
-                    IsEmpleadoActual = true;
-                }
-                else
-                {
-                    IsEmpleadoActual = false;
+                    if (pedidoSeleccionado.Employee != null)
+                    {
+                        if (pedidoSeleccionado.Employee.IdEmployee == EmpleadoActual.IdEmployee)
+                        {
+                            IsEmpleadoActual = true;
+                        }
+                        else
+                        {
+                            IsEmpleadoActual = false;
+                        }
+                    }
                 }
             }
         }
@@ -86,6 +92,7 @@ namespace TrendAdministrator.VistasModelo
         private ServicioApiRest servicioApiRest;
         private ServicioNavegacion servicioNavegacion;
         public RelayCommand MostrarDetallesCommand { get; }
+        public RelayCommand GestionarProductoCommand { get; }
         public RelayCommand EnviarFacturaCommand { get; }
         public GestionPedidosVM()
         {
@@ -96,6 +103,7 @@ namespace TrendAdministrator.VistasModelo
 
             MostrarDetallesCommand = new RelayCommand(MostrarDetalles);
             EnviarFacturaCommand = new RelayCommand(GenerarFactura);
+            GestionarProductoCommand = new RelayCommand(GestionarPedido);
 
             this.servicioNavegacion = new ServicioNavegacion();
             this.servicioApiRest = new ServicioApiRest();
@@ -111,29 +119,15 @@ namespace TrendAdministrator.VistasModelo
             });
         }
 
-        public void CompararEmpleados()
-        {
-            IsEmpleadoActual = PedidoSeleccionado.Employee == EmpleadoActual;
-        }
-
         public void CargarPedidos()
         {
             Pedidos = this.servicioApiRest.OrdersGetAll();
-            EditarFecha();
-        }
-
-        public void EditarFecha()
-        {
-            foreach (Orders pedido in Pedidos)
-            {
-                string[] fecha = pedido.OrderDate.Split('T');
-                pedido.OrderDate = fecha[0];
-            }
         }
 
         public void GestionarPedido()
         {
             PedidoSeleccionado.Employee = EmpleadoActual;
+            this.servicioApiRest.OrdersPut(PedidoSeleccionado);
             CargarPedidos();
         }
 
@@ -264,6 +258,9 @@ namespace TrendAdministrator.VistasModelo
         public void EnviarFactura(string ruta)
         {
             Process.Start("Email.jar", $"{ruta} {PedidoSeleccionado.Client.Email}");
+            PedidoSeleccionado.Managed = true;
+            this.servicioApiRest.OrdersPut(PedidoSeleccionado);
+            CargarPedidos();
         }
     }
 }

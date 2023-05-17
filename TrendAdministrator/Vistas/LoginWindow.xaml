@@ -48,6 +48,6 @@
             <!--<PasswordBox Style="{DynamicResource PasswordBoxStyle}" Password="" Height="35" FontSize="18" Padding="3"></PasswordBox>-->
             <TextBox Template="{DynamicResource TextBoxTemplate}" Height="35" FontSize="18" Padding="3" Text="{Binding Path=Contraseña}"/>
         </StackPanel>
-        <Button Template="{DynamicResource ButtonTemplate}" Command="{Binding Path=LoggearCommand}" Margin="0,30,0,0" Content="Iniciar sesión" Padding="10" FontSize="20" Foreground="White" Background="#7C0FB3" Click="Button_Click"/>
+        <Button Template="{DynamicResource ButtonTemplate}" Margin="0,30,0,0" Content="Iniciar sesión" Padding="10" FontSize="20" Foreground="White" Background="#7C0FB3" Click="Button_Click"/>
     </StackPanel>
 </Window>

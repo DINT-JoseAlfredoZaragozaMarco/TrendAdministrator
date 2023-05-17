@@ -30,7 +30,7 @@ namespace TrendAdministrator.Vistas
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            if (vm.EmpleadoActual != null)
+            if (vm.ComprobarDatos())
             {
                 DialogResult = true;
             }

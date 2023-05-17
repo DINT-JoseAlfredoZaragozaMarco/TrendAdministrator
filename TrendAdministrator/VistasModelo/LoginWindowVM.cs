@@ -46,32 +46,30 @@ namespace TrendAdministrator.VistasModelo
 			get { return empleadoActual; }
 			set { SetProperty(ref empleadoActual, value); }
 		}
-
-
-		public RelayCommand LoggearCommand { get; }
         public LoginWindowVM() 
 		{
 			EmpleadoActual = null;
             this.servicioApi = new ServicioApiRest();
 			ListaEmpleados = this.servicioApi.EmployeesGetAll();
-
-			LoggearCommand = new RelayCommand(ComprobarDatos);
 		}
 
-		public void ComprobarDatos()
+		public bool ComprobarDatos()
 		{
+			bool encontrado = false;
 			foreach (Employees empleado in ListaEmpleados)
 			{
                 if (empleado.EmployeeName.Equals(Usuario) && empleado.EmployeePassword.Equals(Contraseña))
 				{
 					EmpleadoActual = empleado;
                     WeakReferenceMessenger.Default.Send(new EmpleadoLoggeadoMessage(EmpleadoActual));
+					encontrado = true;
                 }
 			}
             if (EmpleadoActual == null)
             {
                 MessageBoxResult result = MessageBox.Show("Credenciales incorrectas", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
+			return encontrado;
         }
     }
 }

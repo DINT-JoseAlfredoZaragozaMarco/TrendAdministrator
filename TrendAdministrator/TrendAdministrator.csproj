@@ -190,8 +190,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Convertidores\ConvertidorComparadorEmpleados.cs" />
     <Compile Include="Convertidores\ConvertidorEmpleadoActual.cs" />
+    <Compile Include="Convertidores\ConvertidorFecha.cs" />
     <Compile Include="Mensajes\EmpleadoLoggeadoMessage.cs" />
     <Compile Include="Mensajes\EnviarEmpleadoMessage.cs" />
     <Compile Include="Mensajes\EnviarPedidoMessage.cs" />

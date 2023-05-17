@@ -115,5 +115,16 @@ namespace TrendAdministrator.Servicios
 
             return JsonConvert.DeserializeObject<ObservableCollection<Orders>>(response.Content);
         }
+
+        public void OrdersPut(Orders order)
+        {
+            RestClient client = new RestClient(Properties.Settings.Default.Endpoint);
+            RestRequest request = new RestRequest("orders", Method.Put);
+
+            string data = JsonConvert.SerializeObject(order);
+            request.AddParameter("application/json", data, ParameterType.RequestBody);
+
+            RestResponse response = client.Execute(request);
+        }
     }
 }

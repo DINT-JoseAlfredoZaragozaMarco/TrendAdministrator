@@ -28,10 +28,5 @@ namespace TrendAdministrator.Vistas
             this.vm = new GestionPedidosVM();
             this.DataContext = vm;
         }
-
-        private void dataGrid_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            vm.CompararEmpleados();
-        }
     }
 }

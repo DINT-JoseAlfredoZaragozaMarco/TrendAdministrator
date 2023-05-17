@@ -10,6 +10,7 @@
              d:DesignHeight="450" d:DesignWidth="800">
     <UserControl.Resources>
         <Convertidores:ConvertidorEmpleadoActual x:Key="ConvertidorEmpleado"></Convertidores:ConvertidorEmpleadoActual>
+        <Convertidores:ConvertidorFecha x:Key="ConvertidorFecha"></Convertidores:ConvertidorFecha>
         <Style TargetType="{x:Type Button}" x:Key="HabilitarBoton">
             <Style.Triggers>
                 <DataTrigger Binding="{Binding Path=PedidoSeleccionado}" Value="{x:Null}">
@@ -37,6 +38,14 @@
             </Style.Triggers>
         </Style>
 
+        <Style TargetType="{x:Type Button}" x:Key="HabilitarLanzar" BasedOn="{StaticResource HabilitarLanzarPedido}">
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding Path=PedidoSeleccionado.Managed}" Value="True">
+                    <Setter Property="IsEnabled" Value="False"/>
+                    <Setter Property="Opacity" Value="0.5"/>
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
 
     </UserControl.Resources>
     
@@ -52,13 +61,13 @@
                 <syncfusion:GridTextColumn MappingName="Client.Email"/>
                 <syncfusion:GridTextColumn MappingName="Employee.EmployeeName"/>
                 <syncfusion:GridCheckBoxColumn MappingName="Managed"/>
-                <syncfusion:GridTextColumn MappingName="OrderDate" TextAlignment="Center"/>
+                <syncfusion:GridTextColumn MappingName="OrderDate" TextAlignment="Center" DisplayBinding="{Binding OrderDate, Converter={StaticResource ConvertidorFecha}}"/>
             </syncfusion:SfDataGrid.Columns>
         </syncfusion:SfDataGrid>
         <Button Content="Mostrar detalles" DockPanel.Dock="Top" Width="100" HorizontalAlignment="Left" Margin="5" Command="{Binding Path=MostrarDetallesCommand}" Style="{StaticResource HabilitarBoton}"/>
         <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal" HorizontalAlignment="Right">
-            <Button Content="Gestionar pedido" Width="100" Margin="5" Style="{StaticResource HabilitarGestionar}"/>
-            <Button Content="Lanzar pedido" Width="100" Margin="5" Style="{StaticResource HabilitarLanzarPedido}" Command="{Binding Path=EnviarFacturaCommand}"/>
+            <Button Content="Gestionar pedido" Width="100" Margin="5" Style="{StaticResource HabilitarGestionar}" Command="{Binding Path=GestionarProductoCommand}"/>
+            <Button Content="Lanzar pedido" Width="100" Margin="5" Style="{StaticResource HabilitarLanzar}" Command="{Binding Path=EnviarFacturaCommand}"/>
         </StackPanel>
         <Border BorderBrush="Black" BorderThickness="1" CornerRadius="5" DockPanel.Dock="Bottom" Margin="5">
             <ContentControl Content="{Binding Path=ContenidoVentana}"></ContentControl>
