@@ -116,6 +116,15 @@ namespace TrendAdministrator.Servicios
             return JsonConvert.DeserializeObject<ObservableCollection<Orders>>(response.Content);
         }
 
+        public int OrdersGetCountManagedByEmployee(int id)
+        {
+            RestClient client = new RestClient(Properties.Settings.Default.Endpoint);
+            RestRequest request = new RestRequest("orders/" + id, Method.Get);
+            RestResponse response = client.Execute(request);
+
+            return JsonConvert.DeserializeObject<int>(response.Content);
+        }
+
         public void OrdersPut(Orders order)
         {
             RestClient client = new RestClient(Properties.Settings.Default.Endpoint);

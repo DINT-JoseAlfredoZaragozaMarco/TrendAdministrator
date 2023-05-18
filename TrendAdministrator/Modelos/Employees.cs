@@ -19,6 +19,15 @@ namespace TrendAdministrator.Modelos
             set { SetProperty(ref idEmployee, value); }
         }
 
+		private int totalPedidosGestionadosMes;
+		[JsonIgnore]
+		public int TotalPedidosGestionadosMes
+        {
+			get { return totalPedidosGestionadosMes; }
+			set { SetProperty(ref totalPedidosGestionadosMes, value); }
+		}
+
+
 		private string employeeName;
 
         [JsonProperty("employeeName")]
@@ -94,12 +103,14 @@ namespace TrendAdministrator.Modelos
 		public Employees() 
 		{
 			IdEmployee = 0;
+			TotalPedidosGestionadosMes = 0;
 		}
 
 		public Employees(int idEmployee, string employeeName, string surnames, 
 						 string email, string employeePassword, string phone, 
 						 string country, string location, string address)
 		{
+			TotalPedidosGestionadosMes = 0;
 			IdEmployee = idEmployee;
 			EmployeeName = employeeName;
 			Surnames = surnames;

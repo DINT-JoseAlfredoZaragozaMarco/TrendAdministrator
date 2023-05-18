@@ -85,11 +85,17 @@
     <Reference Include="Syncfusion.SfNavigationDrawer.WPF, Version=20.4460.0.54, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
       <HintPath>..\packages\Syncfusion.SfNavigationDrawer.WPF.20.4.0.54\lib\net46\Syncfusion.SfNavigationDrawer.WPF.dll</HintPath>
     </Reference>
+    <Reference Include="Syncfusion.SfSkinManager.WPF, Version=20.4460.0.54, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>..\packages\Syncfusion.SfSkinManager.WPF.20.4.0.54\lib\net46\Syncfusion.SfSkinManager.WPF.dll</HintPath>
+    </Reference>
     <Reference Include="Syncfusion.SfTextInputLayout.WPF, Version=20.4460.0.54, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
       <HintPath>..\packages\Syncfusion.SfTextInputLayout.WPF.20.4.0.54\lib\net46\Syncfusion.SfTextInputLayout.WPF.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.Shared.WPF, Version=20.4460.0.54, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
       <HintPath>..\packages\Syncfusion.Shared.WPF.20.4.0.54\lib\net46\Syncfusion.Shared.WPF.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.Themes.FluentDark.WPF, Version=20.4460.0.54, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>..\packages\Syncfusion.Themes.FluentDark.WPF.20.4.0.54\lib\net46\Syncfusion.Themes.FluentDark.WPF.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
@@ -370,6 +376,7 @@
     <Resource Include="Assets\deleteusers.ico" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Assets\icon.ico" />
     <Content Include="Assets\trend.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

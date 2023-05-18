@@ -22,13 +22,12 @@
                 <syncfusion:ChartLegend/>
             </syncfusion:SfChart.Legend>
 
-            <syncfusion:ColumnSeries Label="Total" ItemsSource="{Binding Data}" XBindingPath="Name" YBindingPath="Height" ShowTooltip="True" >
+            <syncfusion:ColumnSeries Label="Total" ItemsSource="{Binding Empleados}" XBindingPath="EmployeeName" YBindingPath="TotalPedidosGestionadosMes" ShowTooltip="True" >
                 <syncfusion:ColumnSeries.AdornmentsInfo>
                     <syncfusion:ChartAdornmentInfo ShowLabel="True" >
                     </syncfusion:ChartAdornmentInfo>
                 </syncfusion:ColumnSeries.AdornmentsInfo>
             </syncfusion:ColumnSeries>
-                      
         </syncfusion:SfChart>
     </StackPanel>
 </UserControl>
