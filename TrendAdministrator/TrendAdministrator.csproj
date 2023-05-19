@@ -238,6 +238,9 @@
     <Compile Include="Vistas\GestionProductos.xaml.cs">
       <DependentUpon>GestionProductos.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Vistas\GestionProveedores.xaml.cs">
+      <DependentUpon>GestionProveedores.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Vistas\LoginWindow.xaml.cs">
       <DependentUpon>LoginWindow.xaml</DependentUpon>
     </Compile>
@@ -279,6 +282,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Vistas\GestionProductos.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Vistas\GestionProveedores.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -377,6 +384,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Assets\icon.ico" />
+    <Content Include="Assets\NewTrendLogoWhite.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Assets\trend.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

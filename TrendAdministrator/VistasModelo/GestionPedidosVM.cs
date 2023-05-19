@@ -11,6 +11,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Controls;
 using TrendAdministrator.Mensajes;
 using TrendAdministrator.Modelos;
@@ -102,7 +103,7 @@ namespace TrendAdministrator.VistasModelo
             });
 
             MostrarDetallesCommand = new RelayCommand(MostrarDetalles);
-            EnviarFacturaCommand = new RelayCommand(GenerarFactura);
+            EnviarFacturaCommand = new RelayCommand(ComprobarDatos);
             GestionarProductoCommand = new RelayCommand(GestionarPedido);
 
             this.servicioNavegacion = new ServicioNavegacion();
@@ -136,6 +137,44 @@ namespace TrendAdministrator.VistasModelo
             ContenidoVentana = this.servicioNavegacion.CargarDetallesPedido();
         }
 
+        public void ComprobarDatos()
+        {
+            bool generarFactura = true;
+
+            foreach (OrderDetails detallePedido in PedidoSeleccionado.OrderDetails)
+            {
+                if (this.servicioApiRest.ProductsGetOne(detallePedido.Product.IdProduct).Stock < detallePedido.Amount)
+                {
+                    generarFactura = false;
+                }
+            }
+
+            if (generarFactura)
+            {
+                foreach (OrderDetails detallePedido in PedidoSeleccionado.OrderDetails)
+                {
+                    Products producto = this.servicioApiRest.ProductsGetOne(detallePedido.Product.IdProduct);
+                    producto.Stock -= detallePedido.Amount;
+                    this.servicioApiRest.ProductsPut(producto);
+                }
+                GenerarFactura();
+            }
+            else
+            {
+                string productosSinStock = "";
+
+                foreach (OrderDetails detallePedido in PedidoSeleccionado.OrderDetails)
+                {
+                    if ((detallePedido.Amount - this.servicioApiRest.ProductsGetOne(detallePedido.Product.IdProduct).Stock) > 0)
+                    {
+                        productosSinStock += detallePedido.Product.Product + " - " + (detallePedido.Amount - this.servicioApiRest.ProductsGetOne(detallePedido.Product.IdProduct).Stock) + "\n";
+                    }
+                }
+
+                MessageBoxResult result = MessageBox.Show("Faltan en almacen:\n\n" + productosSinStock, "Sin unidades en el almacen", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
         public void GenerarFactura()
         {
             String ruta = "./Basura";
@@ -165,8 +204,8 @@ namespace TrendAdministrator.VistasModelo
                                         c.Item().Padding(2).Text("03010 Alacant, Alicante");
                                     });
                                     y.RelativeItem().AlignRight()
-                                     .Width(1.2f, Unit.Inch)
-                                     .Image("./Assets/trend.jpg", ImageScaling.FitArea);
+                                     .Width(3.0f, Unit.Inch)
+                                     .Image("./Assets/NewTrendLogoWhite.png", ImageScaling.FitArea);
                                 });
 
                                 column.Item().PaddingTop(10).Row(r =>

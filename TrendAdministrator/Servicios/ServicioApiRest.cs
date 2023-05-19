@@ -24,6 +24,15 @@ namespace TrendAdministrator.Servicios
             return JsonConvert.DeserializeObject<ObservableCollection<Products>>(response.Content);
         }
 
+        public Products ProductsGetOne(int id)
+        {
+            RestClient client = new RestClient(Properties.Settings.Default.Endpoint);
+            RestRequest request = new RestRequest("products/" + id, Method.Get);
+            RestResponse response = client.Execute(request);
+
+            return JsonConvert.DeserializeObject<Products>(response.Content);
+        }
+
         public void ProductsPost(Products product)
         {
             RestClient client = new RestClient(Properties.Settings.Default.Endpoint);

@@ -48,7 +48,7 @@
                         <Image Source="./Assets/box-delivery.ico"/>
                     </syncfusion:NavigationItem.Icon>
                 </syncfusion:NavigationItem>
-                <syncfusion:NavigationItem Header="Estadística de los empleados" Command="{Binding Path=CargarEstadisticaCommand}">
+                <syncfusion:NavigationItem Header="Estadísticas" Command="{Binding Path=CargarEstadisticaCommand}">
                     <syncfusion:NavigationItem.Icon>
                         <Image Source="./Assets/statistics.ico"/>
                     </syncfusion:NavigationItem.Icon>
