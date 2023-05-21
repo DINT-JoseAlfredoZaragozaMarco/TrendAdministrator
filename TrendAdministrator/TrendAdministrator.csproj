@@ -382,9 +382,6 @@
     <Resource Include="Assets\box-delivery.ico" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Assets\wheel.ico" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Assets\statistics.ico" />
   </ItemGroup>
   <ItemGroup>
@@ -410,12 +407,11 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Assets\icon.ico" />
+    <Resource Include="Assets\delivery.jpg" />
     <Content Include="Assets\NewTrendLogoWhite.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Assets\trend.jpg">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
+    <Resource Include="Assets\question.ico" />
     <Content Include="Email.jar">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

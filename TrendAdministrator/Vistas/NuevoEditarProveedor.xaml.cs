@@ -27,5 +27,10 @@ namespace TrendAdministrator.Vistas
             this.vm = new NuevoEditarProveedorVM();
             this.DataContext = this.vm;
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            DialogResult = true;
+        }
     }
 }

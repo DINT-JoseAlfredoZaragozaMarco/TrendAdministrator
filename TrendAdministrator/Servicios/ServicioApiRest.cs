@@ -73,6 +73,27 @@ namespace TrendAdministrator.Servicios
             return JsonConvert.DeserializeObject<ObservableCollection<Suppliers>>(response.Content);
         }
 
+        public void SupplierPost(Suppliers proveedor)
+        {
+            RestClient client = new RestClient(Properties.Settings.Default.Endpoint);
+            RestRequest request = new RestRequest("suppliers", Method.Post);
+
+            string data = JsonConvert.SerializeObject(proveedor);
+            request.AddParameter("application/json", data, ParameterType.RequestBody);
+
+            RestResponse response = client.Execute(request);
+        }
+
+        public void SupplierPut(Suppliers proveedor)
+        {
+            RestClient client = new RestClient(Properties.Settings.Default.Endpoint);
+            RestRequest request = new RestRequest("suppliers", Method.Put);
+
+            string data = JsonConvert.SerializeObject(proveedor);
+            request.AddParameter("application/json", data, ParameterType.RequestBody);
+
+            RestResponse response = client.Execute(request);
+        }
 
         // Empleados
 

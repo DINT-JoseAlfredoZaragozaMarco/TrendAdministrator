@@ -42,7 +42,7 @@
 
         <Style TargetType="{x:Type Button}" x:Key="HabilitarBoton" BasedOn="{StaticResource ButtonsDiseño}">
             <Style.Triggers>
-                <DataTrigger Binding="{Binding Path=ProductoSeleccionado}" Value="{x:Null}">
+                <DataTrigger Binding="{Binding Path=ProveedorSeleccionado}" Value="{x:Null}">
                     <Setter Property="IsEnabled" Value="False"/>
                     <Setter Property="Opacity" Value="0.5"/>
                 </DataTrigger>
@@ -52,13 +52,6 @@
     
     <DockPanel Background="White">
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" DockPanel.Dock="Bottom">
-            <Button Background="#F08282" Template="{DynamicResource ButtonControlTemplate}" 
-                                           Style="{StaticResource HabilitarBoton}" 
-                                           Command="{Binding Path=EliminarProveedorCommand}">
-                <Button.Content>
-                    <Image Source="../Assets/trash.ico"/>
-                </Button.Content>
-            </Button>
             <Button Background="#a4e4d9" Template="{DynamicResource ButtonControlTemplate}" Style="{StaticResource HabilitarBoton}" Command="{Binding Path=EditarProveedorCommand}">
                 <Button.Content>
                     <Image Source="../Assets/edit.ico"/>

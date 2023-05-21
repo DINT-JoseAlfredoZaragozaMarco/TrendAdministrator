@@ -58,9 +58,9 @@
             <syncfusion:NavigationItem ItemType="Separator" />
 
             <syncfusion:SfNavigationDrawer.FooterItems>
-                <syncfusion:NavigationItem Header="Configuración" IsSelected="True">
+                <syncfusion:NavigationItem Header="Ayuda" IsSelected="True">
                     <syncfusion:NavigationItem.Icon>
-                        <Image Source="./Assets/wheel.ico"/>
+                        <Image Source="./Assets/question.ico"/>
                     </syncfusion:NavigationItem.Icon>
                 </syncfusion:NavigationItem>
                 <syncfusion:NavigationItem Header="{Binding Path=EmpleadoActual.EmployeeName}" Command="{Binding Path=CambiarSesionCommand}">

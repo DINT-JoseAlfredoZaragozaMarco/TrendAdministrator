@@ -61,6 +61,12 @@ namespace TrendAdministrator.Servicios
             return loginWindow.ShowDialog();
         }
 
+        public bool? CargarNuevoEditarProveedor()
+        {
+            NuevoEditarProveedor nuevoEditarProveedor = new NuevoEditarProveedor();
+            return nuevoEditarProveedor.ShowDialog();
+        }
+
         public UserControl CargarEstadisticas()
         {
             return new Estadisticas();

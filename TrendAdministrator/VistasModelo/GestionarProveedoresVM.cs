@@ -7,6 +7,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using TrendAdministrator.Mensajes;
 using TrendAdministrator.Modelos;
 using TrendAdministrator.Servicios;
@@ -41,8 +42,8 @@ namespace TrendAdministrator.VistasModelo
             this.servicioApiRest = new ServicioApiRest();
             this.servicioNavegacion = new ServicioNavegacion();
 
-
             NuevoProveedorCommand = new RelayCommand(AñadirProveedor);
+            EditarProveedorCommand = new RelayCommand(EditarProveedor);
 
             CargarProveedores();
 
@@ -62,7 +63,21 @@ namespace TrendAdministrator.VistasModelo
 
         public void AñadirProveedor()
         {
+            ProveedorSeleccionado = new Suppliers();
+            bool? resultado = this.servicioNavegacion.CargarNuevoEditarProveedor();
+            if ((bool)resultado)
+            {
+                CargarProveedores();
+            }
+        }
 
+        public void EditarProveedor()
+        {
+            bool? resultado = this.servicioNavegacion.CargarNuevoEditarProveedor();
+            if ((bool)resultado)
+            {
+                CargarProveedores();
+            }
         }
     }
 }
