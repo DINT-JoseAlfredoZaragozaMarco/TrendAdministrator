@@ -83,7 +83,7 @@ namespace TrendAdministrator.VistasModelo
 
         public void CargarGestionProveedores()
         {
-
+            ContenidoVentana = servicioNavegacion.CargarGestionarProveedores();
         }
 
         public void CambiarSesion()

@@ -10,22 +10,21 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 using TrendAdministrator.VistasModelo;
 
 namespace TrendAdministrator.Vistas
 {
     /// <summary>
-    /// Lógica de interacción para GestionProveedores.xaml
+    /// Lógica de interacción para NuevoEditarProveedor.xaml
     /// </summary>
-    public partial class GestionProveedores : UserControl
+    public partial class NuevoEditarProveedor : Window
     {
-        private GestionarProveedoresVM vm;
-        public GestionProveedores()
+        private NuevoEditarProveedorVM vm;
+        public NuevoEditarProveedor()
         {
             InitializeComponent();
-            this.vm = new GestionarProveedoresVM();
+            this.vm = new NuevoEditarProveedorVM();
             this.DataContext = this.vm;
         }
     }

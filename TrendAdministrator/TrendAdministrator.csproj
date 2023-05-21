@@ -202,6 +202,7 @@
     <Compile Include="Mensajes\EnviarEmpleadoMessage.cs" />
     <Compile Include="Mensajes\EnviarPedidoMessage.cs" />
     <Compile Include="Mensajes\EnviarProductoMessage.cs" />
+    <Compile Include="Mensajes\EnviarProveedorMessage.cs" />
     <Compile Include="Modelos\Clients.cs" />
     <Compile Include="Modelos\Employees.cs" />
     <Compile Include="Modelos\OrderDetails.cs" />
@@ -217,6 +218,7 @@
     <Compile Include="VistasModelo\EstadisitcaVentasPorMarcasVM.cs" />
     <Compile Include="VistasModelo\EstadisticaEmpleadosVM.cs" />
     <Compile Include="VistasModelo\EstadisticasVM.cs" />
+    <Compile Include="VistasModelo\GestionarProveedoresVM.cs" />
     <Compile Include="VistasModelo\GestionEmpleadosVM.cs" />
     <Compile Include="VistasModelo\GestionPedidosVM.cs" />
     <Compile Include="VistasModelo\GestionProductosVM.cs" />
@@ -224,6 +226,7 @@
     <Compile Include="VistasModelo\MainWindowVM.cs" />
     <Compile Include="VistasModelo\NuevoEditarEmpleadoVM.cs" />
     <Compile Include="VistasModelo\NuevoEditarProductoVM.cs" />
+    <Compile Include="VistasModelo\NuevoEditarProveedorVM.cs" />
     <Compile Include="VistasModelo\ReabastecerProductosVM.cs" />
     <Compile Include="Vistas\DetallesPedido.xaml.cs">
       <DependentUpon>DetallesPedido.xaml</DependentUpon>
@@ -257,6 +260,9 @@
     </Compile>
     <Compile Include="Vistas\NuevoEditarProducto.xaml.cs">
       <DependentUpon>NuevoEditarProducto.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\NuevoEditarProveedor.xaml.cs">
+      <DependentUpon>NuevoEditarProveedor.xaml</DependentUpon>
     </Compile>
     <Compile Include="Vistas\ReabastecerProductoWindow.xaml.cs">
       <DependentUpon>ReabastecerProductoWindow.xaml</DependentUpon>
@@ -314,6 +320,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Vistas\NuevoEditarProducto.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Vistas\NuevoEditarProveedor.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

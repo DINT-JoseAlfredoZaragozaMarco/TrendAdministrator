@@ -70,5 +70,10 @@ namespace TrendAdministrator.Servicios
         {
             return new EstadisticaVentasPorMarcas();
         }
+
+        public UserControl CargarGestionarProveedores()
+        {
+            return new GestionProveedores();
+        }
     }
 }
