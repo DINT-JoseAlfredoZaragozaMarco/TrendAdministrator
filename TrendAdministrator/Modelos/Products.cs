@@ -46,6 +46,15 @@ namespace TrendAdministrator.Modelos
             set { SetProperty(ref brand, value); }
         }
 
+        private int totalVendido;
+
+        [JsonIgnore]
+        public int TotalVendido
+        {
+            get { return totalVendido; }
+            set { SetProperty(ref totalVendido, value); }
+        }
+
         private string productType;
 
         [JsonProperty("productType")]
@@ -104,6 +113,7 @@ namespace TrendAdministrator.Modelos
         {
             IdProduct = 0;
             Stock = 0;
+            TotalVendido = 0;
         }
 
         public Products(int id, string product, int stock, string brand,
@@ -119,6 +129,7 @@ namespace TrendAdministrator.Modelos
             Gender = gender;
             SupplierCode = supplierCode;
             Images = images;
+            TotalVendido = 0;
         }
 
         public Products(string product, string brand,
@@ -134,6 +145,7 @@ namespace TrendAdministrator.Modelos
             Gender = gender;
             SupplierCode = supplierCode;
             Images = images;
+            TotalVendido = 0;
         }
     }
 }

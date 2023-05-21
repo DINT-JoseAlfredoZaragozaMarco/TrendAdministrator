@@ -60,5 +60,15 @@ namespace TrendAdministrator.Servicios
             LoginWindow loginWindow = new LoginWindow();
             return loginWindow.ShowDialog();
         }
+
+        public UserControl CargarEstadisticas()
+        {
+            return new Estadisticas();
+        }
+
+        public UserControl CargarEstadisticasPorMarca()
+        {
+            return new EstadisticaVentasPorMarcas();
+        }
     }
 }

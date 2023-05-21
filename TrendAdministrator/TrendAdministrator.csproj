@@ -214,7 +214,9 @@
     <Compile Include="Servicios\ServicioDialogo.cs" />
     <Compile Include="Servicios\ServicioNavegacion.cs" />
     <Compile Include="VistasModelo\DetallesPedidoVM.cs" />
+    <Compile Include="VistasModelo\EstadisitcaVentasPorMarcasVM.cs" />
     <Compile Include="VistasModelo\EstadisticaEmpleadosVM.cs" />
+    <Compile Include="VistasModelo\EstadisticasVM.cs" />
     <Compile Include="VistasModelo\GestionEmpleadosVM.cs" />
     <Compile Include="VistasModelo\GestionPedidosVM.cs" />
     <Compile Include="VistasModelo\GestionProductosVM.cs" />
@@ -228,6 +230,12 @@
     </Compile>
     <Compile Include="Vistas\EstadisticaEmpleados.xaml.cs">
       <DependentUpon>EstadisticaEmpleados.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\Estadisticas.xaml.cs">
+      <DependentUpon>Estadisticas.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\EstadisticaVentasPorMarcas.xaml.cs">
+      <DependentUpon>EstadisticaVentasPorMarcas.xaml</DependentUpon>
     </Compile>
     <Compile Include="Vistas\GestionEmpleados.xaml.cs">
       <DependentUpon>GestionEmpleados.xaml</DependentUpon>
@@ -270,6 +278,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Vistas\EstadisticaEmpleados.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Vistas\Estadisticas.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Vistas\EstadisticaVentasPorMarcas.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

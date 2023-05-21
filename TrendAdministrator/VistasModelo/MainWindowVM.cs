@@ -54,7 +54,7 @@ namespace TrendAdministrator.VistasModelo
             {
                 CambiarSesionCommand = new RelayCommand(CambiarSesion);
                 GestionarPedidosCommand = new RelayCommand(CargarGestionarPedidos);
-                CargarEstadisticaCommand = new RelayCommand(CargarEstadisticaEmpleados);
+                CargarEstadisticaCommand = new RelayCommand(CargarEstadistica);
                 CargarGestionEmpleadosCommand = new RelayCommand(CargarGestionEmpleados);
                 GestionProductosCommand = new RelayCommand(CargarGestionProductos);
                 GestionProveedoresCommand = new RelayCommand(CargarGestionProveedores);
@@ -66,9 +66,9 @@ namespace TrendAdministrator.VistasModelo
             ContenidoVentana = servicioNavegacion.CargarListaPedidos();
             WeakReferenceMessenger.Default.Send(new EmpleadoLoggeadoMessage(EmpleadoActual));
         }
-        public void CargarEstadisticaEmpleados()
+        public void CargarEstadistica()
         {
-            ContenidoVentana = servicioNavegacion.CargarEstadisticaEmpleados();
+            ContenidoVentana = servicioNavegacion.CargarEstadisticas();
         }
 
         public void CargarGestionEmpleados()
