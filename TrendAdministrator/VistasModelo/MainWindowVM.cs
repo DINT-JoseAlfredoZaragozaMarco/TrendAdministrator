@@ -3,6 +3,7 @@ using CommunityToolkit.Mvvm.Input;
 using CommunityToolkit.Mvvm.Messaging;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -39,6 +40,7 @@ namespace TrendAdministrator.VistasModelo
         public RelayCommand CargarGestionEmpleadosCommand { get; }
         public RelayCommand GestionProductosCommand { get; }
         public RelayCommand GestionProveedoresCommand { get; }
+        public RelayCommand AbrirManualDeUsuarioCommand { get; }
         public RelayCommand CambiarSesionCommand { get; }
 
         public MainWindowVM()
@@ -58,6 +60,7 @@ namespace TrendAdministrator.VistasModelo
                 CargarGestionEmpleadosCommand = new RelayCommand(CargarGestionEmpleados);
                 GestionProductosCommand = new RelayCommand(CargarGestionProductos);
                 GestionProveedoresCommand = new RelayCommand(CargarGestionProveedores);
+                AbrirManualDeUsuarioCommand = new RelayCommand(AbrirManualDeUsuario);
             }
         }
 
@@ -86,6 +89,10 @@ namespace TrendAdministrator.VistasModelo
             ContenidoVentana = servicioNavegacion.CargarGestionarProveedores();
         }
 
+        public void AbrirManualDeUsuario()
+        {
+            Process.Start("http://trend.eastus.cloudapp.azure.com:8080/ManualDeUsuario/");
+        }
         public void CambiarSesion()
         {
             MessageBoxResult result = MessageBox.Show("¿Estás seguro de cambiar de usuario?", "Advertencia", MessageBoxButton.YesNo, MessageBoxImage.Warning);
