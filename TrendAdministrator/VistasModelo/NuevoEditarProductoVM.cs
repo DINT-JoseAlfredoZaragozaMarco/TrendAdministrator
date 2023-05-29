@@ -51,22 +51,28 @@ namespace TrendAdministrator.VistasModelo
         public RelayCommand RealizarCambiosCommand { get; }
         public NuevoEditarProductoVM()
         {
+
+            servicioAzure = new ServicioAzure();
+            servicioDialogo = new ServicioDialogo();
+            servicioApiRest = new ServicioApiRest();
+
+            Suppliers = this.servicioApiRest.SuppliersGetAll();
+
             ProductoActual = WeakReferenceMessenger.Default.Send<EnviarProductoMessage>();
             if (ProductoActual == null)
             {
                 ProductoActual = new Products();
             }
-
-            servicioAzure = new ServicioAzure();
-            servicioDialogo = new ServicioDialogo();
-            servicioApiRest = new ServicioApiRest();
+            else
+            {
+                ProductoActual.SupplierCode = Suppliers.First(n => n.IdSupplier == ProductoActual.SupplierCode.IdSupplier);
+            }
 
             ExplorarImagenesCommand = new RelayCommand(ExploradorDeArchivos);
             RealizarCambiosCommand = new RelayCommand(AceptarCambios);
 
             Sizes = new ObservableCollection<int> { 38, 39, 40, 41, 42, 43, 44, 45, 46, 47};
             Gender = new ObservableCollection<string> {"Men", "Women"};
-            Suppliers = this.servicioApiRest.SuppliersGetAll();
         }
 
         public void ExploradorDeArchivos()

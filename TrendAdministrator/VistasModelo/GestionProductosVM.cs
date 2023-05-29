@@ -81,6 +81,7 @@ namespace TrendAdministrator.VistasModelo
             {
                 CargarProductos();
             }
+            ProductoSeleccionado = null;
         }
 
         public void EditarProducto()
@@ -90,6 +91,7 @@ namespace TrendAdministrator.VistasModelo
             {
                 CargarProductos();
             }
+            ProductoSeleccionado = null;
         }
 
         public void CargarProductos()

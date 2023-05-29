@@ -59,7 +59,7 @@
         </inputLayout:SfTextInputLayout>
         <StackPanel Orientation="Horizontal">
             <inputLayout:SfTextInputLayout Hint="Precio" Width="200" HorizontalAlignment="Left">
-                <TextBox Text="{Binding Path=ProductoActual.Price, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+                <TextBox Text="{Binding Path=ProductoActual.Price, UpdateSourceTrigger=PropertyChanged}"/>
             </inputLayout:SfTextInputLayout>
             <inputLayout:SfTextInputLayout Hint="Tallas" Height="70">
                 <ComboBox ItemsSource="{Binding Path=Sizes}" Width="80" Height="30" SelectedItem="{Binding Path=ProductoActual.Size}"/>

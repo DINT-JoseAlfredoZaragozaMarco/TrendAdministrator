@@ -114,6 +114,7 @@ namespace TrendAdministrator.Modelos
             IdProduct = 0;
             Stock = 0;
             TotalVendido = 0;
+            SupplierCode = new Suppliers();
         }
 
         public Products(int id, string product, int stock, string brand,
