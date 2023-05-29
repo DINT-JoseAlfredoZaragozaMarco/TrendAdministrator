@@ -52,20 +52,23 @@
     <DockPanel Background="White">
         <syncfusion:SfDataGrid x:Name="dataGrid" ItemsSource="{Binding Pedidos}" SelectedItem="{Binding Path=PedidoSeleccionado}" 
                                                   AllowFiltering="True"
+                                                  Height="200"
                                                   AllowEditing="True"
                                                   ColumnSizer="Star" 
                                                   DockPanel.Dock="Top"
-                                                  AutoGenerateColumns="False">
+                                                  AutoGenerateColumns="False"
+                                                  ScrollViewer.VerticalScrollBarVisibility ="Auto">
             <syncfusion:SfDataGrid.Columns>
-                <syncfusion:GridTextColumn MappingName="Client.Username"/>
-                <syncfusion:GridTextColumn MappingName="Client.Email"/>
-                <syncfusion:GridTextColumn MappingName="Employee.EmployeeName"/>
-                <syncfusion:GridCheckBoxColumn MappingName="Managed"/>
-                <syncfusion:GridTextColumn MappingName="OrderDate" TextAlignment="Center" DisplayBinding="{Binding OrderDate, Converter={StaticResource ConvertidorFecha}}"/>
+                <syncfusion:GridTextColumn MappingName="Client.Username" HeaderText="Nombre usuario"/>
+                <syncfusion:GridTextColumn MappingName="Client.Email" HeaderText="Email cliente"/>
+                <syncfusion:GridTextColumn MappingName="Employee.EmployeeName" HeaderText="Nombre empleado"/>
+                <syncfusion:GridCheckBoxColumn MappingName="Managed" HeaderText="Gestionado"/>
+                <syncfusion:GridTextColumn MappingName="OrderDate" HeaderText="Fecha pedido" TextAlignment="Center" DisplayBinding="{Binding OrderDate, Converter={StaticResource ConvertidorFecha}}"/>
             </syncfusion:SfDataGrid.Columns>
         </syncfusion:SfDataGrid>
         <Button Content="Mostrar detalles" DockPanel.Dock="Top" Width="100" HorizontalAlignment="Left" Margin="5" Command="{Binding Path=MostrarDetallesCommand}" Style="{StaticResource HabilitarBoton}"/>
         <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal" HorizontalAlignment="Right">
+            <Button Content="Eliminar pedido" Width="100" Margin="5" Style="{StaticResource HabilitarLanzar}" Command="{Binding Path=EliminarPedidoCommand}"/>
             <Button Content="Gestionar pedido" Width="100" Margin="5" Style="{StaticResource HabilitarGestionar}" Command="{Binding Path=GestionarProductoCommand}"/>
             <Button Content="Lanzar pedido" Width="100" Margin="5" Style="{StaticResource HabilitarLanzar}" Command="{Binding Path=EnviarFacturaCommand}"/>
         </StackPanel>

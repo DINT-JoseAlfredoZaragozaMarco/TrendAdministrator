@@ -95,6 +95,7 @@ namespace TrendAdministrator.VistasModelo
         public RelayCommand MostrarDetallesCommand { get; }
         public RelayCommand GestionarProductoCommand { get; }
         public RelayCommand EnviarFacturaCommand { get; }
+        public RelayCommand EliminarPedidoCommand { get; }
         public GestionPedidosVM()
         {
             WeakReferenceMessenger.Default.Register<EmpleadoLoggeadoMessage>(this, (r, m) =>
@@ -105,6 +106,7 @@ namespace TrendAdministrator.VistasModelo
             MostrarDetallesCommand = new RelayCommand(MostrarDetalles);
             EnviarFacturaCommand = new RelayCommand(ComprobarDatos);
             GestionarProductoCommand = new RelayCommand(GestionarPedido);
+            EliminarPedidoCommand = new RelayCommand(EliminarPedido);
 
             this.servicioNavegacion = new ServicioNavegacion();
             this.servicioApiRest = new ServicioApiRest();
@@ -173,6 +175,12 @@ namespace TrendAdministrator.VistasModelo
 
                 MessageBoxResult result = MessageBox.Show("Faltan en almacen:\n\n" + productosSinStock, "Sin unidades en el almacen", MessageBoxButton.OK, MessageBoxImage.Error);
             }
+        }
+
+        public void EliminarPedido()
+        {
+            this.servicioApiRest.OrdersDelete(PedidoSeleccionado.IdOrder);
+            CargarPedidos();
         }
 
         public void GenerarFactura()

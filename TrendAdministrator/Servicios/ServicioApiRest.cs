@@ -165,5 +165,12 @@ namespace TrendAdministrator.Servicios
 
             RestResponse response = client.Execute(request);
         }
+
+        public void OrdersDelete(int id)
+        {
+            RestClient client = new RestClient(Properties.Settings.Default.Endpoint);
+            RestRequest request = new RestRequest("orders/" + id, Method.Delete);
+            RestResponse response = client.Execute(request);
+        }
     }
 }

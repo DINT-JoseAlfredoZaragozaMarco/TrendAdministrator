@@ -109,10 +109,10 @@
                                                   DockPanel.Dock="Top"
                                                   AutoGenerateColumns="False">
             <syncfusion:SfDataGrid.Columns>
-                <syncfusion:GridTextColumn MappingName="Product"/>
-                <syncfusion:GridTextColumn MappingName="Brand"/>
-                <syncfusion:GridTextColumn MappingName="ProductType"/>
-                <syncfusion:GridCurrencyColumn MappingName="Price"/>
+                <syncfusion:GridTextColumn MappingName="Product" HeaderText="Producto"/>
+                <syncfusion:GridTextColumn MappingName="Brand" HeaderText="Marca"/>
+                <syncfusion:GridTextColumn MappingName="ProductType" HeaderText="Tipo de producto"/>
+                <syncfusion:GridCurrencyColumn MappingName="Price" HeaderText="Precio"/>
             </syncfusion:SfDataGrid.Columns>            
         </syncfusion:SfDataGrid>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" DockPanel.Dock="Bottom">

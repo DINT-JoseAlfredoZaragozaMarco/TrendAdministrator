@@ -15,8 +15,8 @@
                                                   DockPanel.Dock="Top"
                                                   AutoGenerateColumns="False">
             <syncfusion:SfDataGrid.Columns>
-                <syncfusion:GridTextColumn MappingName="Product.Product"/>
-                <syncfusion:GridTextColumn MappingName="Amount"/>
+                <syncfusion:GridTextColumn MappingName="Product.Product" HeaderText="Producto"/>
+                <syncfusion:GridTextColumn MappingName="Amount" HeaderText="Cantidad"/>
             </syncfusion:SfDataGrid.Columns>
         </syncfusion:SfDataGrid>
     </DockPanel>
