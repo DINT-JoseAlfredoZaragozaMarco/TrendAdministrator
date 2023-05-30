@@ -221,7 +221,7 @@ namespace TrendAdministrator.VistasModelo
                                     r.RelativeItem().Text("FACTURAR A").Bold().FontColor("#273389");
                                     r.RelativeItem().Text("ENVIAR A").Bold().FontColor("#273389");
                                     r.RelativeItem().Text("Nº DE FACTURA").Bold().FontColor("#273389");
-                                    r.RelativeItem().Text("ES-001");
+                                    r.RelativeItem().Text("ES-" + PedidoSeleccionado.IdOrder);
                                 });
                                 column.Item().Row(r =>
                                 {

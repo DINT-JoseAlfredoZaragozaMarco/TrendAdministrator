@@ -75,7 +75,7 @@ namespace TrendAdministrator.VistasModelo
 
         public void NuevoProducto()
         {
-            ProductoSeleccionado = new Products();
+            ProductoSeleccionado = null;
             bool? resultado = this.servicioNavegacion.CargarNuevoEditarProducto();
             if ((bool)resultado)
             {
